@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+align:center;
+}
+</style>
+
+    <title>Random Quote Generator</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#getQuoteBtn").click(function(){
+                $.ajax({
+                    url: "https://api.quotable.io/random",
+                    success: function(data){
+                        $("#quote").text(data.content);
+                        $("#author").text("- " + data.author);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+
+<h1>Random Quote Generator</h1>
+
+<button id="getQuoteBtn">Get Quote</button>
+
+<div id="quote"></div>
+<div id="author"></div>
+
+</body>
+</html>
